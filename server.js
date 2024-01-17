@@ -54,14 +54,6 @@ app.post('/send-request', (req, res) => {
         } else {
             console.log('Poruka uspesno poslata na Kafka:', data);
 
-            fetch('http://localhost:8000/api/receive-data', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ city: selectedCity }),
-            });
-
             res.status(200).json({ message: `Grad ${selectedCity} uspesno poslat u topic1 i obradjen!` });
         }
     });
